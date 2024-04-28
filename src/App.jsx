@@ -2,7 +2,9 @@ import Progress from "./components/Progress";
 
 function App() {
   return (
-      <Progress percentage={40} />
+      <div className="App">
+          <Progress percentage={40} />
+      </div>
   );
 }
 
