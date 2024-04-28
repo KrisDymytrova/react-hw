@@ -3,6 +3,6 @@
 text — отображаемый текст
 type — тип алерта, может принимать одно из следующих значений: primary, secondary, success, danger, warning, info, light, dark;
 
-Пример использования: <pre> <Alert type="warning" text="what is love?" />; </pre>
+Пример использования: <pre> `<Alert type="warning" text="what is love?" />;` </pre>
 
-Вывод: <pre> <div class="alert alert-warning" role="alert">what is love?</div> </pre>
+Вывод: <pre> `<div class="alert alert-warning" role="alert">what is love?</div>` </pre>
