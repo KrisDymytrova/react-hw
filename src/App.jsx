@@ -1,10 +1,8 @@
-import './App.css';
+import Progress from "./components/Progress";
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+      <Progress percentage={40} />
   );
 }
 
