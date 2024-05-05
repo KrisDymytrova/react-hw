@@ -1,9 +1,17 @@
+import Carousel from "./components/Carousel";
+import catFirst from './assets/first.jpeg';
+import catSecond from './assets/second.jpeg';
+import catThird from './assets/third.jpeg';
+
+
 
 function App() {
-  return (
-    <div className="App">
+    const img = [catFirst, catSecond, catThird];
 
-    </div>
+  return (
+      <div className="App">
+          <Carousel images={img} />
+      </div>
   );
 }
 
