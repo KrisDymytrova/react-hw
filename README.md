@@ -5,4 +5,4 @@
 
 Рзультат: <pre> `<div><p><a class="btn btn-primary" data-bs-toggle="collapse" href="#" role="button" aria-expanded="false">Link with href</a></p><div class="collapse"><div class="card card-body">collapse me</div></div></div>` </pre>
 
-После клика к классу collapse элемента <div> добавляется класс show, a значение атрибута aria-expanded меняется на true.
+После клика к классу collapse элемента `<div>` добавляется класс show, a значение атрибута aria-expanded меняется на true.
