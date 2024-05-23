@@ -8,14 +8,20 @@ const PostCatalog = () => {
 
     useEffect(() => {
         const fetchPosts = async () => {
+            setLoading(true);
+            setError(null);
+
             try {
                 const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+                if (!res.ok) {
+                    throw new Error('Ошибка сети');
+                }
                 const data = await res.json();
                 setPosts(data);
-                setLoading(false);
             } catch (err) {
                 console.error('Ошибка при получении статей', err);
                 setError('Ошибка при загрузке данных');
+            } finally {
                 setLoading(false);
             }
         };
@@ -56,4 +62,5 @@ PostCatalog.propTypes = {
 };
 
 export default PostCatalog;
+
 
