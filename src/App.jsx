@@ -1,9 +1,10 @@
+import PostCatalog from "./components/PostCatalog";
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+      <div className="App">
+        <PostCatalog loading={true}/>
+      </div>
   );
 }
 
