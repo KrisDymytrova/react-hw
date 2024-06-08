@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-bootstrap';
 import TodoForm from '../TodoForm/TodoForm';
 import TodoItem from '../TodoItem/TodoItem';
@@ -64,18 +63,6 @@ const TodoList = () => {
             </Row>
         </Container>
     );
-};
-
-TodoList.propTypes = {
-    todos: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.string.isRequired,
-            title: PropTypes.string.isRequired,
-            body: PropTypes.string.isRequired,
-            completed: PropTypes.bool.isRequired
-        })
-    ),
-    setTodosState: PropTypes.func
 };
 
 export default TodoList;

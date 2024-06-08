@@ -3,20 +3,28 @@ import PropTypes from 'prop-types';
 import { Button, Form } from 'react-bootstrap';
 
 const TodoForm = ({ onCreate, deleteAllTodos }) => {
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
+    const [formData, setFormData] = useState({ title: '', body: '' });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!title || !body) return alert('Пожалуйста, заполните оба поля: Title и Task Body');
+        if (!formData.title || !formData.body) {
+            return alert('Пожалуйста, заполните оба поля: Title и Task Body');
+        }
         const newTodo = {
-            title,
-            body,
+            ...formData,
             completed: false
         };
         onCreate(newTodo);
-        setTitle('');
-        setBody('');
+        handleClear();
+    };
+
+    const handleClear = () => {
+        setFormData({ title: '', body: '' });
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
     };
 
     return (
@@ -26,8 +34,9 @@ const TodoForm = ({ onCreate, deleteAllTodos }) => {
                 <Form.Control
                     type="text"
                     placeholder="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
                 />
             </Form.Group>
 
@@ -37,8 +46,9 @@ const TodoForm = ({ onCreate, deleteAllTodos }) => {
                     as="textarea"
                     rows={3}
                     placeholder="Task body"
-                    value={body}
-                    onChange={(e) => setBody(e.target.value)}
+                    name="body"
+                    value={formData.body}
+                    onChange={handleChange}
                 />
             </Form.Group>
 
@@ -47,7 +57,7 @@ const TodoForm = ({ onCreate, deleteAllTodos }) => {
                     <Button variant="primary" type="submit" className="mr-2">
                         Create Task!
                     </Button>
-                    <Button variant="warning" onClick={() => { setTitle(''); setBody(''); }} className="mx-2">
+                    <Button variant="warning" onClick={handleClear} className="mx-2">
                         Очистить
                     </Button>
                 </div>
@@ -65,6 +75,7 @@ TodoForm.propTypes = {
 };
 
 export default TodoForm;
+
 
 
 
