@@ -35,7 +35,7 @@ const TodoItem = ({ title, body, id, completed, onDelete }) => {
                 <Form.Check
                     type="checkbox"
                     label="Завершено ?"
-                    checked={check}
+                    checked={Boolean(check)}
                     onChange={handleToggle}
                 />
                 <hr />

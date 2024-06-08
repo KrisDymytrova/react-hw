@@ -61,9 +61,9 @@ const TodoForm = ({ onCreate, deleteAllTodos }) => {
                         Очистить
                     </Button>
                 </div>
-                <Button variant="danger" onClick={deleteAllTodos}>
-                    Удалить всё
-                </Button>
+                    <Button variant="danger" onClick={deleteAllTodos}>
+                        Удалить всё
+                    </Button>
             </div>
         </Form>
     );
