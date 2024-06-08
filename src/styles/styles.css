@@ -1,9 +1,15 @@
-.task {
+* {
+  box-sizing: border-box;
+}
+
+.taskWrapper {
   background-color: #ccc;
   border-radius: 10px;
   box-shadow: 0 0 14px 1px rgba(0, 0, 0, .2);
   padding: 20px;
-  margin-bottom: 20px;
+  margin: 10px;
+  flex: 1 1 250px;
+  max-width: 250px;
 }
 
 .taskHeading {
@@ -13,4 +19,39 @@
 
 .taskDescription {
   font-size: 16px;
+}
+
+.tasksContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #333333;
+  padding: 0 15px;
+}
+
+.navbar-brand:hover {
+  color: #007bff;
+}
+
+.nav-link {
+  font-weight: bold;
+  color: #333333;
+  padding: 0 15px;
+}
+
+.nav-link:hover {
+  color: #007bff;
 }

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Container, Row, Col } from 'react-bootstrap';
 import TodoForm from '../TodoForm/TodoForm';
 import TodoItem from '../TodoItem/TodoItem';
-import { getTodos, setTodos } from '../../LocalStorage/index';
+import { getTodos, setTodos, removeTodos } from '../../LocalStorage/index';
+import { generateId } from "../../generateId";
 
 const DATA_KEY = 'data';
 
@@ -11,7 +13,9 @@ const TodoList = () => {
 
     useEffect(() => {
         const savedTodos = getTodos(DATA_KEY);
-        setTodosState(savedTodos);
+        if (savedTodos) {
+            setTodosState(savedTodos);
+        }
     }, []);
 
     useEffect(() => {
@@ -19,22 +23,19 @@ const TodoList = () => {
     }, [todos]);
 
     const handleCreate = (newTodo) => {
-        setTodosState([...todos, newTodo]);
+        const id = generateId();
+        const updatedTodo = { ...newTodo, id };
+        setTodosState(prevTodos => [...prevTodos, updatedTodo]);
     };
 
     const handleDelete = (id) => {
-        setTodosState(todos.filter(todo => todo.id !== id));
-    };
-
-    const handleClearFields = () => {
-        // This function is called to clear input fields in the form component
-        // As it does not interact with todos state, it's empty here
+        setTodosState(prevTodos => prevTodos.filter(todo => todo.id !== id));
     };
 
     const handleDeleteAll = () => {
         setTodosState([]);
-        localStorage.removeItem(DATA_KEY); // Удаляем все задачи
-        localStorage.removeItem('currentId'); // Сбросить текущий ID
+        removeTodos(DATA_KEY);
+        localStorage.removeItem('currentId');
     };
 
     return (
@@ -46,23 +47,39 @@ const TodoList = () => {
             </Row>
             <Row>
                 <Col md={4}>
-                    <TodoForm onCreate={handleCreate} clearFields={handleClearFields} deleteAllTodos={handleDeleteAll} />
+                    <TodoForm
+                        onCreate={handleCreate}
+                        deleteAllTodos={handleDeleteAll}
+                    />
                 </Col>
-                <Col md={8}>
+                <Col className="tasksContainer" md={8}>
                     {todos.map(todo => (
                         <TodoItem
                             key={todo.id}
                             {...todo}
                             onDelete={handleDelete}
                         />
-                    ))}
+                    )).reverse()}
                 </Col>
             </Row>
         </Container>
     );
 };
 
+TodoList.propTypes = {
+    todos: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            body: PropTypes.string.isRequired,
+            completed: PropTypes.bool.isRequired
+        })
+    ),
+    setTodosState: PropTypes.func
+};
+
 export default TodoList;
+
 
 
 

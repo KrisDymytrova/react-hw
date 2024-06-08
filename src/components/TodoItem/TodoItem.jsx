@@ -2,6 +2,7 @@ import { Button, Card, Form } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { getTodos, setTodos } from "../../LocalStorage/index";
+import '../../styles/styles.css';
 
 const DATA_KEY = 'data';
 
@@ -18,7 +19,7 @@ const TodoItem = ({ title, body, id, completed, onDelete }) => {
             return todo;
         });
         setTodos(DATA_KEY, updatedTodos);
-        setCheck(!check);
+        setCheck(prevCheck => !prevCheck);
     };
 
     const handleClick = () => {
@@ -26,7 +27,7 @@ const TodoItem = ({ title, body, id, completed, onDelete }) => {
     };
 
     return (
-        <Card className="task">
+        <Card className="taskWrapper">
             <Card.Body>
                 <Card.Title className="taskHeading">{check ? <s>{title}</s> : title}</Card.Title>
                 <Card.Text className="taskDescription">{check ? <s>{body}</s> : body}</Card.Text>
@@ -52,10 +53,11 @@ const TodoItem = ({ title, body, id, completed, onDelete }) => {
 TodoItem.propTypes = {
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
     onDelete: PropTypes.func.isRequired,
 };
 
 export default TodoItem;
+
 

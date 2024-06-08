@@ -1,7 +1,16 @@
 export const getTodos = (key) => {
-    return JSON.parse(localStorage.getItem(key)) || [];
+    const savedTodos = localStorage.getItem(key);
+    return savedTodos ? JSON.parse(savedTodos) : [];
 };
 
 export const setTodos = (key, todos) => {
-    localStorage.setItem(key, JSON.stringify(todos));
+    if (todos.length === 0) {
+        localStorage.removeItem(key);
+    } else {
+        localStorage.setItem(key, JSON.stringify(todos));
+    }
+};
+
+export const removeTodos = (key) => {
+    localStorage.removeItem(key);
 };

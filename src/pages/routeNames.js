@@ -1,7 +1,7 @@
 const routeNames = {
     homePage: '/',
     itemPage: '/todo-items/:id',
-    notFound: '/404'
+    notFound: '/*'
 }
 
 Object.freeze(routeNames);

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form } from 'react-bootstrap';
-import { generateId } from '../../generateId';
 
-const TodoForm = ({ onCreate, clearFields, deleteAllTodos }) => {
+const TodoForm = ({ onCreate, deleteAllTodos }) => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
 
@@ -11,16 +10,11 @@ const TodoForm = ({ onCreate, clearFields, deleteAllTodos }) => {
         e.preventDefault();
         if (!title || !body) return alert('Пожалуйста, заполните оба поля: Title и Task Body');
         const newTodo = {
-            id: generateId(),
             title,
             body,
             completed: false
         };
         onCreate(newTodo);
-        clearFields();
-    };
-
-    const handleClearFields = () => {
         setTitle('');
         setBody('');
     };
@@ -53,7 +47,7 @@ const TodoForm = ({ onCreate, clearFields, deleteAllTodos }) => {
                     <Button variant="primary" type="submit" className="mr-2">
                         Create Task!
                     </Button>
-                    <Button variant="warning" onClick={handleClearFields} className="mx-2">
+                    <Button variant="warning" onClick={() => { setTitle(''); setBody(''); }} className="mx-2">
                         Очистить
                     </Button>
                 </div>
@@ -67,11 +61,11 @@ const TodoForm = ({ onCreate, clearFields, deleteAllTodos }) => {
 
 TodoForm.propTypes = {
     onCreate: PropTypes.func.isRequired,
-    clearFields: PropTypes.func.isRequired,
     deleteAllTodos: PropTypes.func.isRequired
 };
 
 export default TodoForm;
+
 
 
 

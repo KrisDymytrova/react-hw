@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import NavMenu from "../../components/NavMenu";
 import TodoList from '../../components/TodoList';
 
 const HomePage = () => {
@@ -7,6 +8,7 @@ const HomePage = () => {
 
     return (
         <>
+            <NavMenu />
             <TodoList todos={todos} setTodos={setTodos} />
         </>
     );
