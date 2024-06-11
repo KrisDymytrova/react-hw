@@ -1,7 +1,7 @@
 import routeNames from "./routeNames";
-import HomePage from "./HomePage";
-import ItemPage from "./ItemPage";
-import NotFound from "./NotFound";
+import HomePage from "../pages/HomePage";
+import ItemPage from "../pages/ItemPage";
+import NotFound from "../pages/NotFound";
 
 const pagesRoutesConfig = [
     {
