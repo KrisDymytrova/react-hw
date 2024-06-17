@@ -1,0 +1,9 @@
+.formGroup {
+  margin-bottom: 16px;
+}
+
+.deleteAllButton {
+  width: 100%;
+  white-space: nowrap;
+}
+

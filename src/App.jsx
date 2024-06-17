@@ -1,10 +1,8 @@
+import React from 'react';
+import RouterMapping from './router/RouterMapping';
 
-function App() {
-  return (
-    <div className="App">
-
-    </div>
-  );
-}
+const App = () => {
+  return <RouterMapping />
+};
 
 export default App;

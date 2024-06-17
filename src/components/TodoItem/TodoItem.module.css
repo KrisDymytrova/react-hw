@@ -1,0 +1,27 @@
+.taskWrapper {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.taskHeading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.taskDescription {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+}

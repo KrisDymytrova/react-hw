@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+Знову TodoList
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Вам потрібно написати todoList такий, як ми писали на уроці, але з доп. функціоналом
 
-## Available Scripts
+**Технології:**
 
-In the project directory, you can run:
+1. Material UI - https://mui.com/material-ui/
+2. Formik - https://formik.org/
+3. PropTypes
+4. react-router
+5. Yup
+6. css-modules
 
-### `npm start`
+**Опис**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Login Page**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+На цій сторінці буде проста форма для вводу даних
 
-### `npm test`
+* Поле для вводу логіну - ( login: demo@login.com )
+* Поле для вводу паролю - ( password: adminadmin )
+* Кнопка submit
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Дані будуть зроблені хардкодом, перевірка повинна бути по тим строкам, які я вказав вище.
 
-### `npm run build`
+Якщо користувач ввів все правильно, то в coockie треба створити запис loggedin: true і перекинути користувача на головну сторінку.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+На всіх сторінках, окрім логіну, треба перевіряти наявність loggedin: true в coockies, якщо відсутній запис, то перенепаравляти користувача на сторінку логін.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Якщо у користувача є loggedin: true і він перейшов на сторінку login, то його треба перекидувати на головну сторінку.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+На кожній сторінці окрім login, повинна бути кнопка logout, яка видаляє з куки  loggedin: true і перенаправляє користувача на сторінку login.
 
-### `npm run eject`
+**Головна сторінка**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* Форма для створення
+* Список елементів
+* Всі дані проходять через localStorage
+* Можливість видалення todo-item
+* Можливість перегляду todo-item
+* Можливість зміни стану todo-item (completed, not-completed, pending) (select)
+* Сторінка todo-item
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+При перегляді todo-item ви переходите на окрему сторінку, на якій є змога:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Видаляти поточний елемент
+* Змінювати стан todo-item (select)
+* Редагувати title та description
+* Всі зміни проходять через localStorage
+* Після видалення користувача кидає на головну сторінку
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Після редагування юзер баче вспливаюче повідомлення про успішне редагування.
 
-## Learn More
+**Сторінка всіх todo**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Просто список всіх todo-items в корі є в localStorage, з можливістю переходу на кожен окремий, але без можливості редагування на цій сторінці.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Важливо!**
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Все, що можливо треба робити з використанням тих технологій і бібліотек, які я писав вище, без бутстрапів і іншої фігні.
