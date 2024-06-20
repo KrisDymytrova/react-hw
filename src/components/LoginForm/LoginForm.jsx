@@ -5,7 +5,7 @@ import { TextField, Typography, Button, Container, Grid, IconButton, InputAdornm
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { login as setLoggedIn } from '../../utils/auth';
 import validationSchema from './validationSchema';
-import styles from './LoginForm.module.css';
+import styles from './LoginForm.module.scss';
 
 const LoginForm = () => {
     const navigate = useNavigate();

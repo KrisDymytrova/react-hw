@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, TextField, Grid } from '@mui/material';
 import { useFormik } from 'formik';
 import validationSchema from './validationSchema';
-import styles from './TodoForm.module.css';
+import styles from './TodoForm.module.scss';
 
 const TodoForm = ({ onCreate, deleteAllTodos }) => {
     const formik = useFormik({

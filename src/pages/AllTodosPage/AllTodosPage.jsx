@@ -4,7 +4,7 @@ import { Container, Typography, Grid, Card, CardContent } from '@mui/material';
 import { getTodos } from '../../utils/localStorage';
 import BaseTemplate from '../../templates/BaseTemplate';
 import NavMenu from '../../components/NavMenu';
-import styles from './AllTodosPage.module.css';
+import styles from './AllTodosPage.module.scss';
 
 
 const AllTodosPage = () => {

@@ -14,7 +14,7 @@ import {
     FormControl
 } from '@mui/material';
 import { Link } from 'react-router-dom';
-import styles from './TodoItem.module.css';
+import styles from './TodoItem.module.scss';
 
 const TodoItem = ({ id, title, body, completed, onDelete, showViewButton, onStatusChange }) => {
     const [status, setStatus] = useState(completed);
@@ -84,7 +84,6 @@ const TodoItem = ({ id, title, body, completed, onDelete, showViewButton, onStat
                                     Delete
                                 </Button>
                             </Grid>
-
                         </Grid>
                     </Grid>
                 </Grid>

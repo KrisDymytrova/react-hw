@@ -1,5 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Grid, Typography, TextField, Select, MenuItem, Button, Snackbar, Alert } from '@mui/material';
+import {
+    Box,
+    Grid,
+    Typography,
+    TextField,
+    Select,
+    MenuItem,
+    Button,
+    Snackbar,
+    Alert,
+    InputLabel,
+    OutlinedInput, FormControl
+} from '@mui/material';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getTodos, setTodos } from '../../utils/localStorage';
 
@@ -86,16 +98,23 @@ const TodoItemEdit = () => {
                     />
                 </Grid>
                 <Grid item xs={12}>
-                    <Select
-                        value={completed}
-                        onChange={handleStatusChange}
-                        variant="outlined"
-                        fullWidth
-                    >
-                        <MenuItem value="completed">Completed</MenuItem>
-                        <MenuItem value="not-completed">Not Completed</MenuItem>
-                        <MenuItem value="pending">Pending</MenuItem>
-                    </Select>
+                    <FormControl fullWidth>
+                        <InputLabel id="status-select-label">
+                            Change state
+                        </InputLabel>
+                        <Select
+                            input={<OutlinedInput label="Change state" />}
+                            multiline
+                            variant="outlined"
+                            fullWidth
+                            value={completed}
+                            onChange={handleStatusChange}
+                        >
+                            <MenuItem value="completed">Completed</MenuItem>
+                            <MenuItem value="not-completed">Not Completed</MenuItem>
+                            <MenuItem value="pending">Pending</MenuItem>
+                        </Select>
+                    </FormControl>
                 </Grid>
                 <Grid item xs={6}>
                     <Button variant="contained" color="primary" fullWidth onClick={handleSave}>

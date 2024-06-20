@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import LogoutButton from '../LogoutButton';
-import styles from './NavMenu.module.css';
+import styles from './NavMenu.module.scss';
 
 const NavMenu = () => {
 
