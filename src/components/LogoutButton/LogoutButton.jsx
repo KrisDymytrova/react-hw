@@ -1,13 +1,13 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
 import { Button } from '@mui/material';
-import { logout } from '../../utils/auth';
 
 const LogoutButton = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        logout();
+        Cookies.remove('loggedin');
         navigate('/login');
     };
 

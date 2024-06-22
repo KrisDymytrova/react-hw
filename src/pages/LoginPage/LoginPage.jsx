@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { isLoggedIn } from '../../utils/auth';
 import LoginForm from '../../components/LoginForm';
 import LoginTemplate from '../../templates/LoginTemplate';
+import Cookies from "js-cookie";
 
 const LoginPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (isLoggedIn()) {
+        if (Cookies.get('loggedin') === 'true') {
             navigate('/');
         }
     }, [navigate]);

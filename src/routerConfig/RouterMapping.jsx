@@ -1,24 +1,15 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import routerConfig from './routerConfig';
-import ProtectedRoute from '../components/ProtectedRoute';
 
 const RouterMapping = () => {
     return (
         <Routes>
-            {routerConfig.map(({ path, component: Component, protectedRoute }) => (
+            {routerConfig.map(({ path, component: Component }) => (
                 <Route
                     key={path}
                     path={path}
-                    element={
-                        protectedRoute ? (
-                            <ProtectedRoute>
-                                <Component />
-                            </ProtectedRoute>
-                        ) : (
-                            <Component />
-                        )
-                    }
+                    element={<Component />}
                 />
             ))}
             <Route path="*" element={<Navigate to="/" />} />
@@ -27,3 +18,4 @@ const RouterMapping = () => {
 };
 
 export default RouterMapping;
+

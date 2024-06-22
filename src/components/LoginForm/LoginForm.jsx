@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { TextField, Typography, Button, Container, Grid, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { login as setLoggedIn } from '../../utils/auth';
+import Cookies from 'js-cookie';
 import validationLoginForm from '../../utils/ValidationSchemas/validationLoginForm';
 import styles from './LoginForm.module.scss';
 
@@ -22,7 +22,7 @@ const LoginForm = () => {
         },
         validationSchema: validationLoginForm,
         onSubmit: (values) => {
-            setLoggedIn();
+            Cookies.set('loggedin', 'true');
             navigate('/');
         },
     });

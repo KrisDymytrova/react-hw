@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import { Typography } from '@mui/material';
 import BaseTemplate from '../../templates/BaseTemplate';
 import NavMenu from '../../components/NavMenu';
 
 const NotFoundPage = () => {
+    useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
