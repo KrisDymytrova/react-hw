@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import { TextField, Typography, Button, Container, Grid, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { login as setLoggedIn } from '../../utils/auth';
-import validationSchema from './validationSchema';
+import validationLoginForm from '../../utils/ValidationSchemas/validationLoginForm';
 import styles from './LoginForm.module.scss';
 
 const LoginForm = () => {
@@ -20,7 +20,7 @@ const LoginForm = () => {
             login: '',
             password: '',
         },
-        validationSchema,
+        validationSchema: validationLoginForm,
         onSubmit: (values) => {
             setLoggedIn();
             navigate('/');
@@ -28,7 +28,7 @@ const LoginForm = () => {
     });
 
     return (
-        <Grid container className={styles.container}>
+        <Grid container className={styles.containerForm}>
             <Grid item>
                 <Container className={styles.form}>
                     <Typography variant="h4" component="h1">

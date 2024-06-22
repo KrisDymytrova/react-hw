@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const validationSchema = Yup.object().shape({
+const validationLoginForm = Yup.object().shape({
     login: Yup.string()
         .oneOf(['demo@login.com'], 'Invalid login')
         .trim()
@@ -11,4 +11,4 @@ const validationSchema = Yup.object().shape({
         .required('Password is required'),
 });
 
-export default validationSchema;
+export default validationLoginForm;

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { isLoggedIn } from '../../utils/auth';
 import LoginForm from '../../components/LoginForm';
-import BaseTemplate from '../../templates/BaseTemplate';
+import LoginTemplate from '../../templates/LoginTemplate';
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -14,9 +14,9 @@ const LoginPage = () => {
     }, [navigate]);
 
     return (
-        <BaseTemplate className={'login-page'}>
+        <LoginTemplate>
             <LoginForm />
-        </BaseTemplate>
+        </LoginTemplate>
     );
 };
 

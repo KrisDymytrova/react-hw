@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, TextField, Grid } from '@mui/material';
 import { useFormik } from 'formik';
-import validationSchema from './validationSchema';
+import validationTodoForm from '../../utils/ValidationSchemas/validationTodoForm';
 import styles from './TodoForm.module.scss';
 
 const TodoForm = ({ onCreate, deleteAllTodos }) => {
@@ -11,7 +11,7 @@ const TodoForm = ({ onCreate, deleteAllTodos }) => {
             title: '',
             body: ''
         },
-        validationSchema,
+        validationSchema: validationTodoForm,
         onSubmit: (values, { resetForm }) => {
             const newTodo = {
                 ...values,

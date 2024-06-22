@@ -1,5 +1,5 @@
 import React from 'react';
-import RouterMapping from './router/RouterMapping';
+import RouterMapping from './routerConfig/RouterMapping';
 
 const App = () => {
   return <RouterMapping />
