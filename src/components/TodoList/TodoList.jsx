@@ -4,7 +4,7 @@ import InventoryRoundedIcon from '@mui/icons-material/InventoryRounded';
 import TodoForm from '../TodoForm/TodoForm';
 import TodoItem from '../TodoItem/TodoItem';
 import { getTodos, setTodos, removeTodos } from '../../utils/localStorage';
-import { generateId } from '../../utils/generateId';
+import uniqid from 'uniqid';
 import styles from './TodoList.module.scss';
 
 const DATA_KEY = 'data';
@@ -24,9 +24,9 @@ const TodoList = () => {
     }, [todos]);
 
     const handleCreate = (newTodo) => {
-        const id = generateId().toString();
+        const id = uniqid();
         const updatedTodo = { id, ...newTodo };
-        setTodosState((prevTodos) => [updatedTodo, ...prevTodos ]);
+        setTodosState((prevTodos) => [updatedTodo, ...prevTodos]);
     };
 
     const handleDelete = (id) => {
