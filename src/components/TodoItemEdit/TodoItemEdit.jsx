@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
     Box,
     Grid,
@@ -17,9 +17,7 @@ import { getTodos, setTodos } from '../../utils/localStorage';
 
 const TodoItemEdit = () => {
     const { id } = useParams();
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
-    const [completed, setCompleted] = useState('');
+    const [todo, setTodo] = useState({ title: '', body: '', completed: '' });
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const navigate = useNavigate();
 
@@ -28,46 +26,44 @@ const TodoItemEdit = () => {
         const selectedTodo = todos.find(todo => todo.id === id);
 
         if (selectedTodo) {
-            setTitle(selectedTodo.title);
-            setBody(selectedTodo.body);
-            setCompleted(selectedTodo.completed);
+            setTodo({
+                title: selectedTodo.title,
+                body: selectedTodo.body,
+                completed: selectedTodo.completed
+            });
         }
     }, [id]);
 
-    const handleTitleChange = (event) => {
-        setTitle(event.target.value);
-    };
+    const handleChange = useCallback((event) => {
+        const { name, value } = event.target;
+        setTodo(prevTodo => ({
+            ...prevTodo,
+            [name]: value
+        }));
+    }, []);
 
-    const handleBodyChange = (event) => {
-        setBody(event.target.value);
-    };
-
-    const handleStatusChange = (event) => {
-        setCompleted(event.target.value);
-    };
-
-    const handleSave = () => {
+    const handleSave = useCallback(() => {
         const todos = getTodos('data');
-        const updatedTodos = todos.map(todo =>
-            todo.id === id ? { ...todo, title, body, completed } : todo
+        const updatedTodos = todos.map(todoItem =>
+            todoItem.id === id ? { ...todoItem, ...todo } : todoItem
         );
         setTodos('data', updatedTodos);
         setOpenSnackbar(true);
-    };
+    }, [id, todo]);
 
-    const handleDelete = () => {
+    const handleDelete = useCallback(() => {
         const todos = getTodos('data');
         const updatedTodos = todos.filter(todo => todo.id !== id);
         setTodos('data', updatedTodos);
         navigate('/');
-    };
+    }, [id, navigate]);
 
-    const handleCloseSnackbar = (event, reason) => {
+    const handleCloseSnackbar = useCallback((event, reason) => {
         if (reason === 'clickaway') {
             return;
         }
         setOpenSnackbar(false);
-    };
+    }, []);
 
     return (
         <Box sx={{ maxWidth: 600, margin: '0 auto' }}>
@@ -79,22 +75,24 @@ const TodoItemEdit = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
+                        name="title"
                         label="Title"
                         variant="outlined"
                         fullWidth
-                        value={title}
-                        onChange={handleTitleChange}
+                        value={todo.title}
+                        onChange={handleChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <TextField
+                        name="body"
                         label="Description"
                         multiline
                         rows={4}
                         variant="outlined"
                         fullWidth
-                        value={body}
-                        onChange={handleBodyChange}
+                        value={todo.body}
+                        onChange={handleChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -103,12 +101,12 @@ const TodoItemEdit = () => {
                             Change state
                         </InputLabel>
                         <Select
+                            name="completed"
                             input={<OutlinedInput label="Change state" />}
-                            multiline
                             variant="outlined"
                             fullWidth
-                            value={completed}
-                            onChange={handleStatusChange}
+                            value={todo.completed}
+                            onChange={handleChange}
                         >
                             <MenuItem value="completed">Completed</MenuItem>
                             <MenuItem value="not-completed">Not Completed</MenuItem>
@@ -141,10 +139,5 @@ const TodoItemEdit = () => {
 };
 
 export default TodoItemEdit;
-
-
-
-
-
 
 
