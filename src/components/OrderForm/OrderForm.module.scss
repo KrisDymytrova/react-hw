@@ -1,0 +1,13 @@
+.orderFormContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  gap: 40px;
+}
+
+.orderFormHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}

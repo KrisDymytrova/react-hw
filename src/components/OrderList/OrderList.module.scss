@@ -1,0 +1,15 @@
+.orderListContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 0 40px;
+  gap: 40px;
+}
+
+.orderListHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
