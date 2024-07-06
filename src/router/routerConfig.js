@@ -7,17 +7,14 @@ const pagesRoutesConfig = [
     {
         path: routeNames.homePage,
         component: HomePage,
-        protectedRoute: true,
     },
     {
         path: routeNames.orderFormPage,
         component: OrderFormPage,
-        protectedRoute: true,
     },
     {
         path: routeNames.notFoundPage,
         component: NotFoundPage,
-        protectedRoute: false,
     },
 ];
 

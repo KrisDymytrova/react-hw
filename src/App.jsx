@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import RouterMapping from './routerConfig/RouterMapping';
+import RouterMapping from './router/RouterMapping';
 
 const App = () => {
     return (
